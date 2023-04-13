@@ -10,6 +10,8 @@ import {
   ApexDataLabels,
   ApexLegend,
   ApexPlotOptions,
+  ApexYAxis,
+  ApexGrid,
 } from 'ng-apexcharts';
 
 export type ChartOptions = {
@@ -19,6 +21,8 @@ export type ChartOptions = {
   title: ApexTitleSubtitle;
   colors: any;
   xaxis: ApexXAxis;
+  plotOption: ApexPlotOptions;
+  grid: ApexGrid;
 };
 @Component({
   selector: 'app-root',
@@ -35,8 +39,8 @@ export class AppComponent {
     this.chartOptions = {
       series: this.getSeriesData(),
       chart: {
-        height: 500,
-        width: 640,
+        height: 400,
+        width: 520,
         type: 'heatmap',
       },
       dataLabels: {
@@ -49,7 +53,18 @@ export class AppComponent {
       xaxis: {
         position: 'top',
         tickAmount: 12,
+        axisBorder: { show: false },
         axisTicks: { show: false },
+        crosshairs: { show: false },
+      },
+      plotOption: {
+        heatmap: {
+          radius: 6,
+          colorScale: { ranges: [{ from: 0, to: 0, color: '#808080' }] },
+        },
+      },
+      grid: {
+        show: false,
       },
     };
   }
