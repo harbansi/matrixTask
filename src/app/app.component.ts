@@ -19,7 +19,6 @@ export type ChartOptions = {
   title: ApexTitleSubtitle;
   colors: any;
   xaxis: ApexXAxis;
-  plotOption: ApexPlotOptions;
 };
 @Component({
   selector: 'app-root',
@@ -47,8 +46,11 @@ export class AppComponent {
       title: {
         text: 'matrix data visualization',
       },
-      xaxis: { position: 'top' },
-      plotOption: { heatmap: { radius: 1 } },
+      xaxis: {
+        position: 'top',
+        tickAmount: 12,
+        axisTicks: { show: false },
+      },
     };
   }
   getSeriesData(): ApexAxisChartSeries {
